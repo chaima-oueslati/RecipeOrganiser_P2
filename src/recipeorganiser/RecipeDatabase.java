@@ -136,7 +136,7 @@ public class RecipeDatabase {
                 conn.commit();
                 return true;
                 
-            }catch(SQLException e){
+            }catch(SQLException  | RuntimeException e){
                 conn.rollback();
                 throw e;
             }
@@ -699,6 +699,213 @@ public class RecipeDatabase {
         }
     }
     
+    public boolean addFavourite(String name) throws SQLException {
+
+        String findSql = "SELECT ID FROM RECIPE WHERE LOWER(NAME) = LOWER(?)";
+
+        try (Connection conn = connectDatabase()) {
+
+            int recipeId;
+
+            try (PreparedStatement ps = conn.prepareStatement(findSql)) {
+                ps.setString(1, name);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (!rs.next()) {
+                        return false;
+                    }
+                    recipeId = rs.getInt("ID");
+                }
+            }
+
+            String sql = "INSERT INTO FAVOURITE (RECIPE_ID) VALUES (?)";
+
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, recipeId);
+                ps.executeUpdate();
+            }
+
+            return true;
+        }
+    }
+    public boolean removeFavourite(String name) throws SQLException {
+
+        String findSql = "SELECT ID FROM RECIPE WHERE LOWER(NAME) = LOWER(?)";
+
+        try (Connection conn = connectDatabase()) {
+
+            int recipeId;
+
+            try (PreparedStatement ps = conn.prepareStatement(findSql)) {
+                ps.setString(1, name);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (!rs.next()) {
+                        return false;
+                    }
+                    recipeId = rs.getInt("ID");
+                }
+            }
+
+            String sql = "DELETE FROM FAVOURITE WHERE RECIPE_ID = ?";
+            int deleted;
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, recipeId);
+                deleted=ps.executeUpdate();
+            }
+            if(deleted==0){
+                return false;
+            }
+           
+            return true;
+        }
+    }
+    
+    public boolean isFavourite(String name) throws SQLException{
+        String findSql = "SELECT ID FROM RECIPE WHERE LOWER(NAME) = LOWER(?)";
+
+        try (Connection conn = connectDatabase()) {
+
+            int recipeId;
+
+            try (PreparedStatement ps = conn.prepareStatement(findSql)) {
+                ps.setString(1, name);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (!rs.next()) {
+                        return false;
+                    }
+                    recipeId = rs.getInt("ID");
+                }
+            }
+
+            String sql = "SELECT RECIPE_ID FROM FAVOURITE WHERE RECIPE_ID = ?";
+            
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, recipeId);
+                try(ResultSet rs= ps.executeQuery()){
+                    return rs.next();
+                }
+                
+            }
+        }
+    }
+    
+    public List<Recipe> viewFavourites() throws SQLException{
+        List<Recipe> list= new ArrayList<>();
+        String sql ="SELECT RECIPE.*" +
+                    "FROM RECIPE " +
+                    "JOIN FAVOURITE ON RECIPE.ID = FAVOURITE.RECIPE_ID";
+        try(Connection conn = connectDatabase();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs= ps.executeQuery()){
+            
+            while(rs.next()){
+                Recipe recipe = buildRecipe(conn,rs);
+                list.add(recipe);
+            }
+               
+        }
+        
+        return list;
+    
+    }
+    
+    
+    public boolean addMealToPlan(String recipeName, DayOfWeek day, MealType mealType) throws SQLException{
+        String findSql = "SELECT ID FROM RECIPE WHERE LOWER(NAME) = LOWER(?)";
+
+        try (Connection conn = connectDatabase()) {
+
+            int recipeId;
+
+            try (PreparedStatement ps = conn.prepareStatement(findSql)) {
+                ps.setString(1, recipeName);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (!rs.next()) {
+                        return false;
+                    }
+                    recipeId = rs.getInt("ID");
+                }
+            }
+            
+            String sql ="UPDATE WEEKLY_MEAL_PLAN " +
+                        "SET RECIPE_ID = ? " +
+                        "WHERE DAY_OF_WEEK = ? AND MEAL_TYPE = ?";
+            
+            try(PreparedStatement ps = conn.prepareStatement(sql)){
+                ps.setInt(1,recipeId);
+                ps.setString(2, day.name());
+                ps.setString(3, mealType.name() );
+                
+                int updated=ps.executeUpdate();
+                if(updated!=0){
+                    return true;
+                }
+                
+            }
+            
+            String sql2 ="INSERT INTO WEEKLY_MEAL_PLAN (DAY_OF_WEEK, MEAL_TYPE, RECIPE_ID) " +
+"                         VALUES(?, ?, ?)";
+                
+            try(PreparedStatement ps = conn.prepareStatement(sql2)){
+                
+                ps.setString(1, day.name());
+                ps.setString(2, mealType.name() );
+                ps.setInt(3,recipeId);
+                ps.executeUpdate();
+                return true;
+                
+            }
+        
+        }  
+        
+    }
+    
+    public boolean removeMealFromPlan(DayOfWeek day, MealType mealType) throws SQLException{
+        
+        String sql ="DELETE FROM WEEKLY_MEAL_PLAN " +
+                    "WHERE DAY_OF_WEEK = ? AND MEAL_TYPE = ?";
+        
+        try(Connection conn = connectDatabase();
+            PreparedStatement ps = conn.prepareStatement(sql) ){
+            ps.setString(1, day.name());
+            ps.setString(2, mealType.name());
+            int delete=ps.executeUpdate();
+            
+            if(delete==0){
+                return false;
+            }
+            return true;
+        }
+            
+    }
+    
+    public List<PlannedMeal> viewWeeklyMealPlan() throws SQLException{
+        List<PlannedMeal> list = new ArrayList<>();
+        String sql="SELECT WEEKLY_MEAL_PLAN.DAY_OF_WEEK, " +
+                    " WEEKLY_MEAL_PLAN.MEAL_TYPE, " +
+                    " RECIPE.* " +
+                    "FROM WEEKLY_MEAL_PLAN " +
+                    "JOIN RECIPE ON WEEKLY_MEAL_PLAN.RECIPE_ID = RECIPE.ID";
+        try(Connection conn = connectDatabase();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs= ps.executeQuery()){
+            
+            
+            while(rs.next()){
+                Recipe recipe=buildRecipe(conn, rs);
+                String day = rs.getString("DAY_OF_WEEK");
+                String mealType = rs.getString("MEAL_TYPE");
+                
+                PlannedMeal meal = new PlannedMeal(DayOfWeek.valueOf(day),MealType.valueOf(mealType),recipe);
+                list.add(meal);
+            }
+        }
+        return list;
+        
+    }
     
     
     

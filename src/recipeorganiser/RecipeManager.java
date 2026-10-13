@@ -41,7 +41,7 @@ public class RecipeManager {
         
     }
     
-    // Finds a recipe by name using case-insensitive lookup.
+    
     public Recipe getRecipe(String name) throws SQLException{
         return database.getRecipe(name);
     }
@@ -63,7 +63,31 @@ public class RecipeManager {
         return database.searchByName(word);
     }
     
+    public boolean addFavourite(String name) throws SQLException{
+        return database.addFavourite(name);
+    }
     
+    public boolean removeFavourite(String name) throws SQLException{
+        return database.removeFavourite(name);
+    }
     
+    public boolean isFavourite(String name) throws SQLException{
+        return database.isFavourite(name);
+    }
     
+    public List<Recipe> viewFavourites() throws SQLException{
+        return database.viewFavourites();
+    }
+    
+    public boolean addMealToPlan(String name, DayOfWeek day, MealType meal) throws SQLException{
+        return database.addMealToPlan(name, day, meal);
+    }
+    
+    public boolean removeMealFromPlan(DayOfWeek day, MealType meal) throws SQLException{
+        return database.removeMealFromPlan(day, meal);
+    }
+    
+    public List<PlannedMeal> viewWeeklyMealPlan() throws SQLException{
+        return database.viewWeeklyMealPlan();
+    }
 }

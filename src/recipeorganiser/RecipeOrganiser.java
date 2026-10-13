@@ -19,6 +19,7 @@ public class RecipeOrganiser {
         database.createTables();
         RecipeManager manager = new RecipeManager(database);
         
+        RecipeFactory factory = new RecipeFactory();
         
         //RecipeManager manager = new RecipeManager();
         //RecipeFileManager fileManager = new RecipeFileManager();
