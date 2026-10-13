@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Oct 13 15:46:10 NZDT 2026:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-01a1-3327-35af-00000f6f3520 
+on database directory /Users/chaimaoueslati/NetBeansProjects/RecipeOrganiser_P2/RecipeDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4aa298b7 
+Loaded from file:/Users/chaimaoueslati/Desktop/software%20construction/PDC_Tutorials/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=25.0.2+10-LTS-69
+user.dir=/Users/chaimaoueslati/NetBeansProjects/RecipeOrganiser_P2
+os.name=Mac OS X
+os.arch=aarch64
+os.version=15.7.3
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

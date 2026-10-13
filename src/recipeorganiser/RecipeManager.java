@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.sql.SQLException;
 
 /**
  *
@@ -19,16 +20,16 @@ import java.util.Map;
  */
 public class RecipeManager {
     private Map<String,Recipe>recipes=new HashMap<>();
+    private RecipeDatabase database;
+    
+    public RecipeManager(RecipeDatabase database) {
+        this.database = database;
+    }
     
     // Adds a recipe using a lowercase name as the map key to prevent
     // duplicate names with different capitalisation.
-    public boolean addRecipe(Recipe recipe){
-        if(recipes.containsKey(recipe.getName().toLowerCase())){
-            return false;
-        }else{
-            recipes.put(recipe.getName().toLowerCase(), recipe);
-            return true;
-        }                
+    public boolean addRecipe(Recipe recipe)throws SQLException{
+        return database.addRecipe(recipe);              
     }
     // Removes a recipe by name using a case-insensitive lookup.
     public boolean removeRecipe(String name){
