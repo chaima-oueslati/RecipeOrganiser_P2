@@ -1,0 +1,74 @@
+Type: NO_COOK
+Name: simple salad
+Category: APPETISER
+Prep Time: 10.0
+Prep Unit: M
+Chill Time: 5.0
+Chill Time Unit: M
+
+Ingredients: 
+lettuce | 100.0 | g
+tomato | 2.0 | pieces
+cucumber | 1.0 | piece
+olive oil | 1.0 | tbsp
+
+Instructions: 
+
+1) Wash and chop the vegetables
+2) Mix all ingredients together
+END_RECIPE
+
+Type: BAKING
+Name: banana cake
+Category: DESSERT
+Prep Time: 20.0
+Prep Unit: M
+Oven Temperature: 180
+Temperature Unit: C
+Baking Time: 50.0
+Baking Time Unit: M
+Oven Mode: BAKE_CONVENTIONAL
+
+Ingredients: 
+butter | 0.5 | cup
+brown sugar | 1.0 | cup
+bananas | 3.0 | pieces
+egg | 1.0 | piece
+vanilla | 1.0 | tsp
+flour | 2.0 | cups
+baking soda | 1.0 | tsp
+baking powder | 0.5 | tsp
+salt | 0.25 | tsp
+
+Instructions: 
+
+1) brown the butter
+2) let it cool for 5/10 m
+3) add the sugar and mix
+4) add the bananas and mix
+5) add the egg and vanilla and mix
+6) fold in the dry mixture
+7) bake for 50 - 60 min
+END_RECIPE
+
+Type: STOVE_TOP
+Name: omelet
+Category: BREAKFAST
+Prep Time: 5.0
+Prep Unit: M
+Heat Level: MEDIUM
+Cooking Time: 5.0
+Cooking Time Unit: M
+
+Ingredients: 
+eggs | 2.0 | pieces
+milk | 30.0 | ml
+salt | 1.0 | tsp
+
+Instructions: 
+
+1) Beat the eggs and milk
+2) Pour the mixture into the pan
+3) Cook until the eggs are set
+END_RECIPE
+
