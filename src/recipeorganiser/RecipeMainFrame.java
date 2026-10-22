@@ -28,21 +28,853 @@ public class RecipeMainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sidebarPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        homeButton = new javax.swing.JButton();
+        myRecipesButton = new javax.swing.JButton();
+        addRecipeButton = new javax.swing.JButton();
+        favouritesButton = new javax.swing.JButton();
+        mealPlanButton = new javax.swing.JButton();
+        settingsButton = new javax.swing.JButton();
+        contentPanel = new javax.swing.JPanel();
+        dashboardPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        searchTextField = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
+        allFilterButton = new javax.swing.JButton();
+        bakingFilterButton = new javax.swing.JButton();
+        stoveTopFilterButton = new javax.swing.JButton();
+        noCookFilterButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        viewAllButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        recipesPanel = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        recipesSearchField = new javax.swing.JTextField();
+        categoryComboBox = new javax.swing.JComboBox<>();
+        sortByComboBox = new javax.swing.JComboBox<>();
+        recipesScrollPane = new javax.swing.JScrollPane();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        addRecipePanel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        recipeNameField = new javax.swing.JTextField();
+        recipeTypeComboBox = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        recipeCategoryComboBox = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        prepTimeField = new javax.swing.JTextField();
+        prepTimeUnitComboBox = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        cookingDetailsPanel = new javax.swing.JPanel();
+        bakingDetailsPanel = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        ovenTemperatureField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        temperatureUnitComboBox = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        bakingTimeField = new javax.swing.JTextField();
+        bakingTimeUnitComboBox = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        ovenModeComboBox = new javax.swing.JComboBox<>();
+        stoveDetailsPanel = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        cookingTimeField = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        cookingTimeUnitComboBox = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
+        heatLevelComboBox = new javax.swing.JComboBox<>();
+        noCookDetailsPanel = new javax.swing.JPanel();
+        chillTimeField = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        chillTimeUnitComboBox = new javax.swing.JComboBox<>();
+        ingredientsPanel = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        ingredientNameField = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        ingredientQuantityField = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        ingredientUnitField = new javax.swing.JTextField();
+        addIngredientButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        removeIngredientButton = new javax.swing.JButton();
+        instructionsPanel = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        instructionsScrollPane = new javax.swing.JScrollPane();
+        instructionsTextArea = new javax.swing.JTextArea();
+        cancelRecipeButton = new javax.swing.JButton();
+        saveRecipeButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Recipe Organiser");
+        setPreferredSize(new java.awt.Dimension(1100, 700));
+
+        sidebarPanel.setBackground(new java.awt.Color(232, 241, 232));
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel5.setText("<html>Recipe<br>Organiser</html>");
+
+        homeButton.setBackground(new java.awt.Color(145, 177, 156));
+        homeButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        homeButton.setForeground(new java.awt.Color(255, 255, 255));
+        homeButton.setText("Home");
+        homeButton.setBorderPainted(false);
+
+        myRecipesButton.setBackground(new java.awt.Color(232, 241, 232));
+        myRecipesButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        myRecipesButton.setForeground(new java.awt.Color(48, 82, 61));
+        myRecipesButton.setText("My Recipes");
+        myRecipesButton.setBorderPainted(false);
+
+        addRecipeButton.setBackground(new java.awt.Color(232, 241, 232));
+        addRecipeButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        addRecipeButton.setForeground(new java.awt.Color(48, 82, 61));
+        addRecipeButton.setText("Add Recipe");
+        addRecipeButton.setBorderPainted(false);
+
+        favouritesButton.setBackground(new java.awt.Color(232, 241, 232));
+        favouritesButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        favouritesButton.setForeground(new java.awt.Color(48, 82, 61));
+        favouritesButton.setText("Favourites");
+        favouritesButton.setBorderPainted(false);
+
+        mealPlanButton.setBackground(new java.awt.Color(232, 241, 232));
+        mealPlanButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        mealPlanButton.setForeground(new java.awt.Color(48, 82, 61));
+        mealPlanButton.setText("Meal Plan");
+        mealPlanButton.setBorderPainted(false);
+
+        settingsButton.setBackground(new java.awt.Color(232, 241, 232));
+        settingsButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        settingsButton.setForeground(new java.awt.Color(48, 82, 61));
+        settingsButton.setText("Settings");
+        settingsButton.setBorderPainted(false);
+
+        javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
+        sidebarPanel.setLayout(sidebarPanelLayout);
+        sidebarPanelLayout.setHorizontalGroup(
+            sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarPanelLayout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addGroup(sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(favouritesButton)
+                    .addComponent(addRecipeButton)
+                    .addComponent(myRecipesButton)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mealPlanButton)
+                    .addComponent(settingsButton))
+                .addGap(27, 27, 27))
+            .addGroup(sidebarPanelLayout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(homeButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        sidebarPanelLayout.setVerticalGroup(
+            sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidebarPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(homeButton)
+                .addGap(26, 26, 26)
+                .addComponent(myRecipesButton)
+                .addGap(28, 28, 28)
+                .addComponent(addRecipeButton)
+                .addGap(26, 26, 26)
+                .addComponent(favouritesButton)
+                .addGap(30, 30, 30)
+                .addComponent(mealPlanButton)
+                .addGap(27, 27, 27)
+                .addComponent(settingsButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
+        contentPanel.setLayout(new java.awt.CardLayout());
+
+        dashboardPanel.setBackground(new java.awt.Color(247, 248, 245));
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel1.setText("Welcome to Recipe Organiser!");
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setText("What would you like to cook today?");
+
+        searchTextField.addActionListener(this::searchTextFieldActionPerformed);
+
+        searchButton.setText("Search");
+        searchButton.addActionListener(this::searchButtonActionPerformed);
+
+        allFilterButton.setBackground(new java.awt.Color(103, 155, 120));
+        allFilterButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        allFilterButton.setForeground(new java.awt.Color(255, 255, 255));
+        allFilterButton.setText("All");
+        allFilterButton.addActionListener(this::allFilterButtonActionPerformed);
+
+        bakingFilterButton.setBackground(new java.awt.Color(238, 242, 237));
+        bakingFilterButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        bakingFilterButton.setForeground(new java.awt.Color(48, 82, 61));
+        bakingFilterButton.setText("Baking");
+
+        stoveTopFilterButton.setBackground(new java.awt.Color(238, 242, 237));
+        stoveTopFilterButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        stoveTopFilterButton.setForeground(new java.awt.Color(48, 82, 61));
+        stoveTopFilterButton.setText("Stove Top");
+
+        noCookFilterButton.setBackground(new java.awt.Color(238, 242, 237));
+        noCookFilterButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        noCookFilterButton.setForeground(new java.awt.Color(48, 82, 61));
+        noCookFilterButton.setText("No Cook");
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jLabel4.setText("   My Recipes");
+
+        viewAllButton.setBackground(new java.awt.Color(247, 248, 245));
+        viewAllButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        viewAllButton.setForeground(new java.awt.Color(48, 82, 61));
+        viewAllButton.setText("View All");
+        viewAllButton.setBorderPainted(false);
+        viewAllButton.setContentAreaFilled(false);
+        viewAllButton.setFocusPainted(false);
+
+        jPanel2.setBackground(new java.awt.Color(247, 248, 245));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 722, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 271, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout dashboardPanelLayout = new javax.swing.GroupLayout(dashboardPanel);
+        dashboardPanel.setLayout(dashboardPanelLayout);
+        dashboardPanelLayout.setHorizontalGroup(
+            dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1485, Short.MAX_VALUE))
+                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                        .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2))
+                                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(allFilterButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(bakingFilterButton)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(stoveTopFilterButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(noCookFilterButton))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewAllButton)
+                        .addGap(227, 227, 227))))
+        );
+        dashboardPanelLayout.setVerticalGroup(
+            dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(44, 44, 44)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(allFilterButton)
+                    .addComponent(bakingFilterButton)
+                    .addComponent(stoveTopFilterButton)
+                    .addComponent(noCookFilterButton))
+                .addGap(50, 50, 50)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        contentPanel.add(dashboardPanel, "DASHBOARD");
+
+        recipesPanel.setBackground(new java.awt.Color(247, 248, 245));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
+        jLabel6.setText("My Recipes");
+
+        recipesSearchField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        recipesSearchField.setToolTipText("Search recipes by name");
+        recipesSearchField.addActionListener(this::recipesSearchFieldActionPerformed);
+
+        categoryComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        categoryComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        categoryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Baking", " Stove Top", " No Cook" }));
+
+        sortByComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        sortByComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        sortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Category", "Prep Time" }));
+
+        recipesScrollPane.setBackground(new java.awt.Color(247, 248, 245));
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(48, 60, 52));
+        jLabel7.setText("Category");
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(48, 60, 52));
+        jLabel8.setText("Sort By");
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(48, 60, 52));
+        jLabel9.setText("Search recipes");
+
+        javax.swing.GroupLayout recipesPanelLayout = new javax.swing.GroupLayout(recipesPanel);
+        recipesPanel.setLayout(recipesPanelLayout);
+        recipesPanelLayout.setHorizontalGroup(
+            recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(recipesPanelLayout.createSequentialGroup()
+                .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(recipesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(recipesPanelLayout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addComponent(jLabel6))
+                        .addGroup(recipesPanelLayout.createSequentialGroup()
+                            .addGap(59, 59, 59)
+                            .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addComponent(recipesSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(112, 112, 112)
+                            .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(categoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7))
+                            .addGap(46, 46, 46)
+                            .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addComponent(sortByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(1495, Short.MAX_VALUE))
+        );
+        recipesPanelLayout.setVerticalGroup(
+            recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(recipesPanelLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jLabel6)
+                .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(recipesPanelLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recipesPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(9, 9, 9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(categoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sortByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recipesSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(recipesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        contentPanel.add(recipesPanel, "RECIPES");
+
+        addRecipePanel.setBackground(new java.awt.Color(247, 248, 245));
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel10.setText("Add New Recipe ");
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel11.setText("Recipe Name *");
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel12.setText("Recipe Type *");
+
+        recipeNameField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        recipeTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baking", "Stove Top ", "No Cook" }));
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel13.setText("Category *");
+
+        recipeCategoryComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        recipeCategoryComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        recipeCategoryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel14.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel14.setText("Preparation Time *");
+
+        prepTimeField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        prepTimeUnitComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        prepTimeUnitComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        prepTimeUnitComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minutes", "Hours" }));
+
+        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel15.setText("Cooking Details");
+
+        cookingDetailsPanel.setPreferredSize(new java.awt.Dimension(650, 160));
+        cookingDetailsPanel.setLayout(new java.awt.CardLayout());
+
+        bakingDetailsPanel.setBackground(new java.awt.Color(247, 248, 245));
+
+        jLabel16.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel16.setText("Oven Temperature *");
+
+        ovenTemperatureField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel17.setText("Temperature Unit *");
+
+        temperatureUnitComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        temperatureUnitComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        temperatureUnitComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "°C", "°F" }));
+
+        jLabel18.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel18.setText("Baking Time *");
+
+        bakingTimeField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        bakingTimeUnitComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        bakingTimeUnitComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        bakingTimeUnitComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minutes", "Hours", " " }));
+
+        jLabel19.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel19.setText("Baking Time Unit *");
+
+        jLabel20.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel20.setText("Oven Mode *");
+
+        ovenModeComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        ovenModeComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        ovenModeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Conventional", "Fan Forced", "Grill" }));
+
+        javax.swing.GroupLayout bakingDetailsPanelLayout = new javax.swing.GroupLayout(bakingDetailsPanel);
+        bakingDetailsPanel.setLayout(bakingDetailsPanelLayout);
+        bakingDetailsPanelLayout.setHorizontalGroup(
+            bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bakingDetailsPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bakingDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(ovenModeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(bakingDetailsPanelLayout.createSequentialGroup()
+                        .addGroup(bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20)
+                            .addGroup(bakingDetailsPanelLayout.createSequentialGroup()
+                                .addGroup(bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(ovenTemperatureField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(82, 82, 82)
+                                .addGroup(bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(temperatureUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(89, 89, 89)
+                                .addGroup(bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bakingTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18))
+                                .addGap(28, 28, 28)
+                                .addGroup(bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19)
+                                    .addComponent(bakingTimeUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        bakingDetailsPanelLayout.setVerticalGroup(
+            bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bakingDetailsPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bakingDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ovenTemperatureField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(temperatureUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bakingTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bakingTimeUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ovenModeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        cookingDetailsPanel.add(bakingDetailsPanel, "BAKING");
+
+        stoveDetailsPanel.setBackground(new java.awt.Color(247, 248, 245));
+
+        jLabel21.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel21.setText("Cooking Time *");
+
+        cookingTimeField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cookingTimeField.addActionListener(this::cookingTimeFieldActionPerformed);
+
+        jLabel22.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel22.setText("Cooking Time Unit *");
+
+        cookingTimeUnitComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cookingTimeUnitComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        cookingTimeUnitComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minutes", "Hours" }));
+
+        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel23.setText("Heat Level *");
+
+        heatLevelComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        heatLevelComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        heatLevelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Low", "Medium", " High" }));
+
+        javax.swing.GroupLayout stoveDetailsPanelLayout = new javax.swing.GroupLayout(stoveDetailsPanel);
+        stoveDetailsPanel.setLayout(stoveDetailsPanelLayout);
+        stoveDetailsPanelLayout.setHorizontalGroup(
+            stoveDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stoveDetailsPanelLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(stoveDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cookingTimeField))
+                .addGap(154, 154, 154)
+                .addGroup(stoveDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addComponent(cookingTimeUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(175, 175, 175)
+                .addGroup(stoveDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(heatLevelComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        stoveDetailsPanelLayout.setVerticalGroup(
+            stoveDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stoveDetailsPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(stoveDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
+                .addGap(18, 18, 18)
+                .addGroup(stoveDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cookingTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cookingTimeUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(heatLevelComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        cookingDetailsPanel.add(stoveDetailsPanel, "STOVE_TOP");
+
+        noCookDetailsPanel.setBackground(new java.awt.Color(247, 248, 245));
+
+        chillTimeField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        chillTimeField.addActionListener(this::chillTimeFieldActionPerformed);
+
+        jLabel24.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel24.setText("Chill Time *");
+
+        jLabel25.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel25.setText("Chill Time Unit *");
+
+        chillTimeUnitComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        chillTimeUnitComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        chillTimeUnitComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minutes", "Hours" }));
+
+        javax.swing.GroupLayout noCookDetailsPanelLayout = new javax.swing.GroupLayout(noCookDetailsPanel);
+        noCookDetailsPanel.setLayout(noCookDetailsPanelLayout);
+        noCookDetailsPanelLayout.setHorizontalGroup(
+            noCookDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(noCookDetailsPanelLayout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addGroup(noCookDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(chillTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(181, 181, 181)
+                .addGroup(noCookDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
+                    .addComponent(chillTimeUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        noCookDetailsPanelLayout.setVerticalGroup(
+            noCookDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(noCookDetailsPanelLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(noCookDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel25))
+                .addGap(18, 18, 18)
+                .addGroup(noCookDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(chillTimeField)
+                    .addComponent(chillTimeUnitComboBox))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        cookingDetailsPanel.add(noCookDetailsPanel, "NO_COOK");
+
+        ingredientsPanel.setBackground(new java.awt.Color(247, 248, 245));
+        ingredientsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel26.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel26.setText("Ingredients");
+        ingredientsPanel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel27.setText("Ingredient Name *");
+        ingredientsPanel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        ingredientNameField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        ingredientNameField.addActionListener(this::ingredientNameFieldActionPerformed);
+        ingredientsPanel.add(ingredientNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel28.setText("Quantity *");
+        ingredientsPanel.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
+
+        ingredientQuantityField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        ingredientQuantityField.addActionListener(this::ingredientQuantityFieldActionPerformed);
+        ingredientsPanel.add(ingredientQuantityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
+
+        jLabel29.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(48, 79, 61));
+        jLabel29.setText("Unit *");
+        ingredientsPanel.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
+
+        ingredientUnitField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        ingredientsPanel.add(ingredientUnitField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, -1));
+
+        addIngredientButton.setBackground(new java.awt.Color(145, 177, 156));
+        addIngredientButton.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        addIngredientButton.setForeground(new java.awt.Color(255, 255, 255));
+        addIngredientButton.setText("+ Add Ingredient");
+        ingredientsPanel.add(addIngredientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
+
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(60, 30));
+
+        jList1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jScrollPane1.setViewportView(jList1);
+
+        ingredientsPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 95, 430, 30));
+
+        removeIngredientButton.setBackground(new java.awt.Color(145, 177, 156));
+        removeIngredientButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        removeIngredientButton.setText("- Remove Selected");
+        removeIngredientButton.addActionListener(this::removeIngredientButtonActionPerformed);
+        ingredientsPanel.add(removeIngredientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, -1, -1));
+
+        instructionsPanel.setBackground(new java.awt.Color(247, 248, 245));
+        instructionsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel30.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel30.setText("Instructions");
+        instructionsPanel.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
+        instructionsTextArea.setColumns(20);
+        instructionsTextArea.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        instructionsTextArea.setLineWrap(true);
+        instructionsTextArea.setRows(5);
+        instructionsTextArea.setWrapStyleWord(true);
+        instructionsScrollPane.setViewportView(instructionsTextArea);
+
+        instructionsPanel.add(instructionsScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 440, 60));
+
+        cancelRecipeButton.setBackground(new java.awt.Color(145, 177, 156));
+        cancelRecipeButton.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        cancelRecipeButton.setText("Cancel");
+        instructionsPanel.add(cancelRecipeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
+
+        saveRecipeButton.setBackground(new java.awt.Color(145, 177, 156));
+        saveRecipeButton.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        saveRecipeButton.setForeground(new java.awt.Color(255, 255, 255));
+        saveRecipeButton.setText("Save Recipe");
+        instructionsPanel.add(saveRecipeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+
+        javax.swing.GroupLayout addRecipePanelLayout = new javax.swing.GroupLayout(addRecipePanel);
+        addRecipePanel.setLayout(addRecipePanelLayout);
+        addRecipePanelLayout.setHorizontalGroup(
+            addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addRecipePanelLayout.createSequentialGroup()
+                .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addRecipePanelLayout.createSequentialGroup()
+                        .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addRecipePanelLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(recipeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(68, 68, 68)
+                                .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(recipeTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(91, 91, 91)
+                                .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(recipeCategoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(71, 71, 71)
+                                .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addGroup(addRecipePanelLayout.createSequentialGroup()
+                                        .addComponent(prepTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(prepTimeUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(addRecipePanelLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ingredientsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                                    .addComponent(instructionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(addRecipePanelLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel15))
+                            .addGroup(addRecipePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 64, Short.MAX_VALUE))
+                    .addGroup(addRecipePanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(cookingDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        addRecipePanelLayout.setVerticalGroup(
+            addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addRecipePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addGap(27, 27, 27)
+                .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addRecipePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(recipeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recipeTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recipeCategoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prepTimeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prepTimeUnitComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addComponent(cookingDetailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ingredientsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(instructionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        contentPanel.add(addRecipePanel, "ADD_RECIPE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(sidebarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(sidebarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void allFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allFilterButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_allFilterButtonActionPerformed
+
+    private void recipesSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipesSearchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recipesSearchFieldActionPerformed
+
+    private void chillTimeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chillTimeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chillTimeFieldActionPerformed
+
+    private void cookingTimeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cookingTimeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cookingTimeFieldActionPerformed
+
+    private void ingredientNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingredientNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingredientNameFieldActionPerformed
+
+    private void ingredientQuantityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingredientQuantityFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingredientQuantityFieldActionPerformed
+
+    private void removeIngredientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeIngredientButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeIngredientButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +902,90 @@ public class RecipeMainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addIngredientButton;
+    private javax.swing.JButton addRecipeButton;
+    private javax.swing.JPanel addRecipePanel;
+    private javax.swing.JButton allFilterButton;
+    private javax.swing.JPanel bakingDetailsPanel;
+    private javax.swing.JButton bakingFilterButton;
+    private javax.swing.JTextField bakingTimeField;
+    private javax.swing.JComboBox<String> bakingTimeUnitComboBox;
+    private javax.swing.JButton cancelRecipeButton;
+    private javax.swing.JComboBox<String> categoryComboBox;
+    private javax.swing.JTextField chillTimeField;
+    private javax.swing.JComboBox<String> chillTimeUnitComboBox;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel cookingDetailsPanel;
+    private javax.swing.JTextField cookingTimeField;
+    private javax.swing.JComboBox<String> cookingTimeUnitComboBox;
+    private javax.swing.JPanel dashboardPanel;
+    private javax.swing.JButton favouritesButton;
+    private javax.swing.JComboBox<String> heatLevelComboBox;
+    private javax.swing.JButton homeButton;
+    private javax.swing.JTextField ingredientNameField;
+    private javax.swing.JTextField ingredientQuantityField;
+    private javax.swing.JTextField ingredientUnitField;
+    private javax.swing.JPanel ingredientsPanel;
+    private javax.swing.JPanel instructionsPanel;
+    private javax.swing.JScrollPane instructionsScrollPane;
+    private javax.swing.JTextArea instructionsTextArea;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton mealPlanButton;
+    private javax.swing.JButton myRecipesButton;
+    private javax.swing.JPanel noCookDetailsPanel;
+    private javax.swing.JButton noCookFilterButton;
+    private javax.swing.JComboBox<String> ovenModeComboBox;
+    private javax.swing.JTextField ovenTemperatureField;
+    private javax.swing.JTextField prepTimeField;
+    private javax.swing.JComboBox<String> prepTimeUnitComboBox;
+    private javax.swing.JComboBox<String> recipeCategoryComboBox;
+    private javax.swing.JTextField recipeNameField;
+    private javax.swing.JComboBox<String> recipeTypeComboBox;
+    private javax.swing.JPanel recipesPanel;
+    private javax.swing.JScrollPane recipesScrollPane;
+    private javax.swing.JTextField recipesSearchField;
+    private javax.swing.JButton removeIngredientButton;
+    private javax.swing.JButton saveRecipeButton;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField searchTextField;
+    private javax.swing.JButton settingsButton;
+    private javax.swing.JPanel sidebarPanel;
+    private javax.swing.JComboBox<String> sortByComboBox;
+    private javax.swing.JPanel stoveDetailsPanel;
+    private javax.swing.JButton stoveTopFilterButton;
+    private javax.swing.JComboBox<String> temperatureUnitComboBox;
+    private javax.swing.JButton viewAllButton;
     // End of variables declaration//GEN-END:variables
 }
