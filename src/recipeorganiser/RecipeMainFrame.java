@@ -4,6 +4,25 @@
  */
 package recipeorganiser;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagLayout;
+import java.awt.RenderingHints;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.JTableHeader;
+
+
 /**
  *
  * @author chaimaoueslati
@@ -17,8 +36,128 @@ public class RecipeMainFrame extends javax.swing.JFrame {
      */
     public RecipeMainFrame() {
         initComponents();
+        styleMealPlanTable();
     }
 
+    
+    // AI-assisted GUI styling for the Weekly Meal Plan JTable.
+    // This method changes the appearance of an existing table.
+    // It does not create the table or implement click handling.
+    private void styleMealPlanTable() {
+
+        // PART 1: Style the table and its grid lines.
+        mealPlanTable.setRowHeight(65);
+        mealPlanTable.setBackground(Color.WHITE);
+        mealPlanTable.setForeground(new Color(48, 82, 61));
+        mealPlanTable.setFont(new Font("SansSerif", Font.PLAIN, 15));
+        mealPlanTable.setGridColor(new Color(210, 222, 210));
+        mealPlanTable.setShowGrid(true);
+        mealPlanTable.setRowSelectionAllowed(false);
+        mealPlanTable.setCellSelectionEnabled(false);
+        mealPlanTable.setFillsViewportHeight(false);
+
+        // PART 2: Style the column headings.
+        JTableHeader header = mealPlanTable.getTableHeader();
+        header.setPreferredSize(new Dimension(0, 55));
+        header.setReorderingAllowed(false);
+
+        DefaultTableCellRenderer headerRenderer =
+                new DefaultTableCellRenderer();
+
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        headerRenderer.setBackground(new Color(232, 241, 232));
+        headerRenderer.setForeground(new Color(48, 82, 61));
+        headerRenderer.setFont(new Font("SansSerif", Font.BOLD, 16));
+
+        headerRenderer.setBorder(
+                BorderFactory.createLineBorder(new Color(210, 222, 210))
+        );
+
+        for (int column = 0; column < mealPlanTable.getColumnCount(); column++) {
+            mealPlanTable.getColumnModel()
+                    .getColumn(column)
+                    .setHeaderRenderer(headerRenderer);
+        }
+
+        // PART 3: Centre and style Monday–Sunday.
+        DefaultTableCellRenderer dayRenderer =
+                new DefaultTableCellRenderer();
+
+        dayRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        dayRenderer.setBackground(Color.WHITE);
+        dayRenderer.setForeground(new Color(48, 82, 61));
+        dayRenderer.setFont(new Font("SansSerif", Font.BOLD, 15));
+
+        mealPlanTable.getColumnModel()
+                .getColumn(0)
+                .setCellRenderer(dayRenderer);
+
+        // PART 4: Display rounded, pale-green boxes in the meal cells.
+        // These are visual boxes, NOT actual JButtons.
+        TableCellRenderer mealRenderer = new TableCellRenderer() {
+
+            @Override
+            public Component getTableCellRendererComponent(
+                    JTable table,
+                    Object value,
+                    boolean isSelected,
+                    boolean hasFocus,
+                    int row,
+                    int column) {
+
+                JPanel cellPanel = new JPanel(new GridBagLayout());
+                cellPanel.setBackground(Color.WHITE);
+
+                JLabel mealLabel = new JLabel(
+                        value == null ? "" : value.toString()
+                );
+
+                mealLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                mealLabel.setFont(new Font("SansSerif", Font.PLAIN, 15));
+                mealLabel.setForeground(new Color(48, 82, 61));
+
+                JPanel roundedBox = new JPanel(new BorderLayout()) {
+
+                    @Override
+                    protected void paintComponent(Graphics g) {
+                        Graphics2D g2 = (Graphics2D) g.create();
+
+                        g2.setRenderingHint(
+                                RenderingHints.KEY_ANTIALIASING,
+                                RenderingHints.VALUE_ANTIALIAS_ON
+                        );
+
+                        g2.setColor(new Color(240, 245, 239));
+
+                        g2.fillRoundRect(
+                                0, 0, getWidth(), getHeight(), 16, 16
+                        );
+
+                        g2.dispose();
+                    }
+                };
+
+                roundedBox.setOpaque(false);
+                roundedBox.setPreferredSize(new Dimension(150, 43));
+                roundedBox.add(mealLabel, BorderLayout.CENTER);
+
+                cellPanel.add(roundedBox);
+
+                return cellPanel;
+            }
+        };
+
+        // Apply the rounded-box renderer to Breakfast, Lunch and Dinner.
+        for (int column = 1; column < mealPlanTable.getColumnCount(); column++) {
+            mealPlanTable.getColumnModel()
+                    .getColumn(column)
+                    .setCellRenderer(mealRenderer);
+        }
+
+        // PART 5: Remove the scroll pane border.
+        mealPlanScrollPane.setBorder(BorderFactory.createEmptyBorder());
+        mealPlanScrollPane.getViewport().setBackground(Color.WHITE);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +174,6 @@ public class RecipeMainFrame extends javax.swing.JFrame {
         addRecipeButton = new javax.swing.JButton();
         favouritesButton = new javax.swing.JButton();
         mealPlanButton = new javax.swing.JButton();
-        settingsButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
         dashboardPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -113,6 +251,52 @@ public class RecipeMainFrame extends javax.swing.JFrame {
         instructionsTextArea = new javax.swing.JTextArea();
         cancelRecipeButton = new javax.swing.JButton();
         saveRecipeButton = new javax.swing.JButton();
+        favouritesPanel = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        favouritesSearchField = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        favouritesTypeComboBox = new javax.swing.JComboBox<>();
+        jLabel34 = new javax.swing.JLabel();
+        favouritesSortComboBox = new javax.swing.JComboBox<>();
+        jLabel35 = new javax.swing.JLabel();
+        favouritesScrollPane = new javax.swing.JScrollPane();
+        favouritesListPanel = new javax.swing.JPanel();
+        weeklyMealPlanPanel = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        clearPlanButton = new javax.swing.JButton();
+        savePlanButton = new javax.swing.JButton();
+        mealPlanScrollPane = new javax.swing.JScrollPane();
+        mealPlanTable = new javax.swing.JTable();
+        recipeDetailsPanel = new javax.swing.JPanel();
+        backToRecipesButton = new javax.swing.JButton();
+        recipeDetailsImageLabel = new javax.swing.JLabel();
+        recipeDetailsNameLabel = new javax.swing.JLabel();
+        recipeDetailsFavouriteButton = new javax.swing.JToggleButton();
+        recipeDetailsTypeLabel = new javax.swing.JLabel();
+        recipeDetailsTimeLabel = new javax.swing.JLabel();
+        ingredientsTabButton = new javax.swing.JButton();
+        instructionsTabButton = new javax.swing.JButton();
+        detailsTabButton = new javax.swing.JButton();
+        editRecipeButton = new javax.swing.JButton();
+        deleteRecipeButton = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        recipeDetailsCategoryLabel = new javax.swing.JLabel();
+        recipeInfoPanel = new javax.swing.JPanel();
+        ingredientsInfoPanel = new javax.swing.JPanel();
+        ingredientsHeadingLabel = new javax.swing.JLabel();
+        ingredientsScrollPane = new javax.swing.JScrollPane();
+        recipeIngredientsList = new javax.swing.JList<>();
+        instructionsInfoPanel = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        instructionScrollPane = new javax.swing.JScrollPane();
+        recipeInstructionsTextArea = new javax.swing.JTextArea();
+        cookingInfoPanel = new javax.swing.JPanel();
+        cookingDetailsHeadingLabel = new javax.swing.JLabel();
+        cookingDetailOneLabel = new javax.swing.JLabel();
+        cookingDetailTwoLabel = new javax.swing.JLabel();
+        cookingDetailThreeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recipe Organiser");
@@ -154,12 +338,6 @@ public class RecipeMainFrame extends javax.swing.JFrame {
         mealPlanButton.setText("Meal Plan");
         mealPlanButton.setBorderPainted(false);
 
-        settingsButton.setBackground(new java.awt.Color(232, 241, 232));
-        settingsButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        settingsButton.setForeground(new java.awt.Color(48, 82, 61));
-        settingsButton.setText("Settings");
-        settingsButton.setBorderPainted(false);
-
         javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
         sidebarPanel.setLayout(sidebarPanelLayout);
         sidebarPanelLayout.setHorizontalGroup(
@@ -171,8 +349,7 @@ public class RecipeMainFrame extends javax.swing.JFrame {
                     .addComponent(addRecipeButton)
                     .addComponent(myRecipesButton)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mealPlanButton)
-                    .addComponent(settingsButton))
+                    .addComponent(mealPlanButton))
                 .addGap(27, 27, 27))
             .addGroup(sidebarPanelLayout.createSequentialGroup()
                 .addGap(76, 76, 76)
@@ -194,8 +371,6 @@ public class RecipeMainFrame extends javax.swing.JFrame {
                 .addComponent(favouritesButton)
                 .addGap(30, 30, 30)
                 .addComponent(mealPlanButton)
-                .addGap(27, 27, 27)
-                .addComponent(settingsButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -271,7 +446,7 @@ public class RecipeMainFrame extends javax.swing.JFrame {
                 .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dashboardPanelLayout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1485, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(dashboardPanelLayout.createSequentialGroup()
                         .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(dashboardPanelLayout.createSequentialGroup()
@@ -389,7 +564,7 @@ public class RecipeMainFrame extends javax.swing.JFrame {
                             .addGroup(recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel8)
                                 .addComponent(sortByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(1495, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         recipesPanelLayout.setVerticalGroup(
             recipesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -413,7 +588,7 @@ public class RecipeMainFrame extends javax.swing.JFrame {
                     .addComponent(recipesSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(recipesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         contentPanel.add(recipesPanel, "RECIPES");
@@ -821,6 +996,275 @@ public class RecipeMainFrame extends javax.swing.JFrame {
 
         contentPanel.add(addRecipePanel, "ADD_RECIPE");
 
+        favouritesPanel.setBackground(new java.awt.Color(247, 248, 245));
+        favouritesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel31.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
+        jLabel31.setText("My Favourites");
+        favouritesPanel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabel32.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(105, 115, 105));
+        jLabel32.setText("Your saved recipes, all in one place.");
+        favouritesPanel.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
+        favouritesPanel.add(favouritesSearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 250, 30));
+
+        jLabel33.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jLabel33.setText("Search favourites...");
+        favouritesPanel.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+
+        favouritesTypeComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        favouritesTypeComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        favouritesTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All ", "Baking", "Stove Top", "No Cook" }));
+        favouritesPanel.add(favouritesTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 100, 30));
+
+        jLabel34.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel34.setText("Recipe Type");
+        favouritesPanel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, -1, -1));
+
+        favouritesSortComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        favouritesSortComboBox.setForeground(new java.awt.Color(102, 102, 102));
+        favouritesSortComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name (A–Z)", "Name (Z–A)" }));
+        favouritesPanel.add(favouritesSortComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 110, 30));
+
+        jLabel35.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel35.setText("Sort By");
+        favouritesPanel.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, -1, -1));
+
+        favouritesScrollPane.setBackground(new java.awt.Color(247, 248, 245));
+        favouritesScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        favouritesListPanel.setBackground(new java.awt.Color(247, 248, 245));
+        favouritesListPanel.setLayout(new java.awt.GridLayout(0, 3, 15, 15));
+        favouritesScrollPane.setViewportView(favouritesListPanel);
+
+        favouritesPanel.add(favouritesScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 810, 430));
+
+        contentPanel.add(favouritesPanel, "card5");
+
+        weeklyMealPlanPanel.setBackground(new java.awt.Color(247, 248, 245));
+        weeklyMealPlanPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel36.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
+        jLabel36.setText("Weekly Meal Plan");
+        weeklyMealPlanPanel.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        clearPlanButton.setBackground(new java.awt.Color(145, 177, 156));
+        clearPlanButton.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        clearPlanButton.setText("Clear All");
+        clearPlanButton.addActionListener(this::clearPlanButtonActionPerformed);
+        weeklyMealPlanPanel.add(clearPlanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 100, 40));
+
+        savePlanButton.setBackground(new java.awt.Color(145, 177, 156));
+        savePlanButton.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        savePlanButton.setForeground(new java.awt.Color(255, 255, 255));
+        savePlanButton.setText("Save Plan");
+        weeklyMealPlanPanel.add(savePlanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 100, 40));
+
+        mealPlanScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        mealPlanScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        mealPlanTable.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        mealPlanTable.setForeground(new java.awt.Color(48, 82, 61));
+        mealPlanTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"  Monday", "+ Add", "+ Add", "+ Add"},
+                {"  Tuesday", "+ Add", "+ Add", "+ Add"},
+                {"  Wednesday", "+ Add", "+ Add", "+ Add"},
+                {"  Thursday", "+ Add", "+ Add", "+ Add"},
+                {"  Friday", "+ Add", "+ Add", "+ Add"},
+                {"  Saturday", "+ Add", "+ Add", "+ Add"},
+                {"  Sunday", "+ Add", "+ Add", "+ Add"}
+            },
+            new String [] {
+                "Day", "Breakfast", "Lunch", "Dinner"
+            }
+        ));
+        mealPlanTable.setGridColor(new java.awt.Color(210, 222, 210));
+        mealPlanTable.setRowHeight(65);
+        mealPlanTable.setRowSelectionAllowed(false);
+        mealPlanTable.setSelectionBackground(new java.awt.Color(232, 241, 232));
+        mealPlanTable.setShowHorizontalLines(true);
+        mealPlanTable.setShowVerticalLines(true);
+        mealPlanScrollPane.setViewportView(mealPlanTable);
+
+        weeklyMealPlanPanel.add(mealPlanScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 540, 480));
+
+        contentPanel.add(weeklyMealPlanPanel, "card6");
+
+        recipeDetailsPanel.setBackground(new java.awt.Color(247, 248, 245));
+        recipeDetailsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        backToRecipesButton.setBackground(new java.awt.Color(247, 248, 245));
+        backToRecipesButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        backToRecipesButton.setText("← Back");
+        backToRecipesButton.setBorderPainted(false);
+        backToRecipesButton.addActionListener(this::backToRecipesButtonActionPerformed);
+        recipeDetailsPanel.add(backToRecipesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        recipeDetailsImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recipeorganiser/Minimal Chef Hat and Utensils Icon.png"))); // NOI18N
+        recipeDetailsImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(48, 82, 61)));
+        recipeDetailsImageLabel.setPreferredSize(new java.awt.Dimension(220, 220));
+        recipeDetailsPanel.add(recipeDetailsImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 320, 250));
+
+        recipeDetailsNameLabel.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        recipeDetailsNameLabel.setForeground(new java.awt.Color(48, 82, 61));
+        recipeDetailsNameLabel.setText("Chocolate cake");
+        recipeDetailsPanel.add(recipeDetailsNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
+
+        recipeDetailsFavouriteButton.setBackground(new java.awt.Color(247, 248, 245));
+        recipeDetailsFavouriteButton.setFont(new java.awt.Font("SansSerif", 0, 28)); // NOI18N
+        recipeDetailsFavouriteButton.setForeground(new java.awt.Color(48, 82, 61));
+        recipeDetailsFavouriteButton.setText("♡");
+        recipeDetailsFavouriteButton.setBorder(null);
+        recipeDetailsFavouriteButton.setBorderPainted(false);
+        recipeDetailsFavouriteButton.addActionListener(this::recipeDetailsFavouriteButtonActionPerformed);
+        recipeDetailsPanel.add(recipeDetailsFavouriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 50, 70));
+
+        recipeDetailsTypeLabel.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        recipeDetailsTypeLabel.setForeground(new java.awt.Color(95, 125, 100));
+        recipeDetailsTypeLabel.setText("Baking");
+        recipeDetailsPanel.add(recipeDetailsTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
+
+        recipeDetailsTimeLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        recipeDetailsTimeLabel.setForeground(new java.awt.Color(102, 102, 102));
+        recipeDetailsTimeLabel.setText("1h 20m");
+        recipeDetailsPanel.add(recipeDetailsTimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
+
+        ingredientsTabButton.setBackground(new java.awt.Color(232, 241, 232));
+        ingredientsTabButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        ingredientsTabButton.setForeground(new java.awt.Color(48, 82, 61));
+        ingredientsTabButton.setText("Ingredients");
+        ingredientsTabButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(190, 205, 190), 1, true));
+        recipeDetailsPanel.add(ingredientsTabButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 145, 40));
+
+        instructionsTabButton.setBackground(new java.awt.Color(232, 241, 232));
+        instructionsTabButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        instructionsTabButton.setForeground(new java.awt.Color(48, 82, 61));
+        instructionsTabButton.setText("Instructions");
+        instructionsTabButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(190, 205, 190), 1, true));
+        recipeDetailsPanel.add(instructionsTabButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 145, 40));
+
+        detailsTabButton.setBackground(new java.awt.Color(232, 241, 232));
+        detailsTabButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        detailsTabButton.setForeground(new java.awt.Color(48, 82, 61));
+        detailsTabButton.setText("Details");
+        detailsTabButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(190, 205, 190), 1, true));
+        recipeDetailsPanel.add(detailsTabButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 145, 40));
+
+        editRecipeButton.setBackground(new java.awt.Color(48, 82, 61));
+        editRecipeButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        editRecipeButton.setForeground(new java.awt.Color(255, 255, 255));
+        editRecipeButton.setText("Edit Recipe");
+        editRecipeButton.setBorderPainted(false);
+        recipeDetailsPanel.add(editRecipeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 610, 130, 40));
+
+        deleteRecipeButton.setBackground(new java.awt.Color(247, 226, 226));
+        deleteRecipeButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        deleteRecipeButton.setForeground(new java.awt.Color(161, 62, 62));
+        deleteRecipeButton.setText("Delete");
+        deleteRecipeButton.setBorderPainted(false);
+        recipeDetailsPanel.add(deleteRecipeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 110, 40));
+
+        jLabel37.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel37.setText("⏲ \tPrep time:");
+        recipeDetailsPanel.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
+
+        jLabel38.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel38.setText("🏷 Category:");
+        recipeDetailsPanel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, -1, -1));
+
+        recipeDetailsCategoryLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        recipeDetailsCategoryLabel.setForeground(new java.awt.Color(102, 102, 102));
+        recipeDetailsCategoryLabel.setText("dessert");
+        recipeDetailsPanel.add(recipeDetailsCategoryLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, -1, -1));
+
+        recipeInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        recipeInfoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 205, 190)));
+        recipeInfoPanel.setLayout(new java.awt.CardLayout());
+
+        ingredientsInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ingredientsInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ingredientsHeadingLabel.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
+        ingredientsHeadingLabel.setForeground(new java.awt.Color(48, 82, 61));
+        ingredientsHeadingLabel.setText("Ingredients");
+        ingredientsInfoPanel.add(ingredientsHeadingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        ingredientsScrollPane.setBorder(null);
+
+        recipeIngredientsList.setBorder(null);
+        recipeIngredientsList.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        recipeIngredientsList.setForeground(new java.awt.Color(50, 50, 50));
+        recipeIngredientsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "item", " " };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        ingredientsScrollPane.setViewportView(recipeIngredientsList);
+
+        ingredientsInfoPanel.add(ingredientsScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 510, 170));
+
+        recipeInfoPanel.add(ingredientsInfoPanel, "card2");
+
+        instructionsInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        instructionsInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel39.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(48, 82, 61));
+        jLabel39.setText("Instructions");
+        instructionsInfoPanel.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        instructionScrollPane.setBackground(new java.awt.Color(255, 255, 255));
+        instructionScrollPane.setBorder(null);
+
+        recipeInstructionsTextArea.setEditable(false);
+        recipeInstructionsTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        recipeInstructionsTextArea.setColumns(20);
+        recipeInstructionsTextArea.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        recipeInstructionsTextArea.setForeground(new java.awt.Color(50, 50, 50));
+        recipeInstructionsTextArea.setLineWrap(true);
+        recipeInstructionsTextArea.setRows(5);
+        recipeInstructionsTextArea.setText("1.Mix the ingredients.");
+        recipeInstructionsTextArea.setWrapStyleWord(true);
+        recipeInstructionsTextArea.setBorder(null);
+        instructionScrollPane.setViewportView(recipeInstructionsTextArea);
+
+        instructionsInfoPanel.add(instructionScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 470, 180));
+
+        recipeInfoPanel.add(instructionsInfoPanel, "card3");
+
+        cookingInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        cookingInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cookingDetailsHeadingLabel.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
+        cookingDetailsHeadingLabel.setForeground(new java.awt.Color(46, 82, 61));
+        cookingDetailsHeadingLabel.setText("Cooking Details");
+        cookingInfoPanel.add(cookingDetailsHeadingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        cookingDetailOneLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        cookingDetailOneLabel.setForeground(new java.awt.Color(50, 50, 50));
+        cookingDetailOneLabel.setText("Oven temperature: 180°C");
+        cookingInfoPanel.add(cookingDetailOneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+
+        cookingDetailTwoLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        cookingDetailTwoLabel.setForeground(new java.awt.Color(50, 50, 50));
+        cookingDetailTwoLabel.setText("Oven mode: Conventional");
+        cookingInfoPanel.add(cookingDetailTwoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        cookingDetailThreeLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        cookingDetailThreeLabel.setForeground(new java.awt.Color(50, 50, 50));
+        cookingDetailThreeLabel.setText("Cooking time: 40 min");
+        cookingInfoPanel.add(cookingDetailThreeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+
+        recipeInfoPanel.add(cookingInfoPanel, "card4");
+
+        recipeDetailsPanel.add(recipeInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 610, 260));
+
+        contentPanel.add(recipeDetailsPanel, "card7");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -876,6 +1320,18 @@ public class RecipeMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_removeIngredientButtonActionPerformed
 
+    private void clearPlanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearPlanButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clearPlanButtonActionPerformed
+
+    private void backToRecipesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToRecipesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backToRecipesButtonActionPerformed
+
+    private void recipeDetailsFavouriteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recipeDetailsFavouriteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recipeDetailsFavouriteButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -906,6 +1362,7 @@ public class RecipeMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton addRecipeButton;
     private javax.swing.JPanel addRecipePanel;
     private javax.swing.JButton allFilterButton;
+    private javax.swing.JButton backToRecipesButton;
     private javax.swing.JPanel bakingDetailsPanel;
     private javax.swing.JButton bakingFilterButton;
     private javax.swing.JTextField bakingTimeField;
@@ -914,20 +1371,42 @@ public class RecipeMainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> categoryComboBox;
     private javax.swing.JTextField chillTimeField;
     private javax.swing.JComboBox<String> chillTimeUnitComboBox;
+    private javax.swing.JButton clearPlanButton;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JLabel cookingDetailOneLabel;
+    private javax.swing.JLabel cookingDetailThreeLabel;
+    private javax.swing.JLabel cookingDetailTwoLabel;
+    private javax.swing.JLabel cookingDetailsHeadingLabel;
     private javax.swing.JPanel cookingDetailsPanel;
+    private javax.swing.JPanel cookingInfoPanel;
     private javax.swing.JTextField cookingTimeField;
     private javax.swing.JComboBox<String> cookingTimeUnitComboBox;
     private javax.swing.JPanel dashboardPanel;
+    private javax.swing.JButton deleteRecipeButton;
+    private javax.swing.JButton detailsTabButton;
+    private javax.swing.JButton editRecipeButton;
     private javax.swing.JButton favouritesButton;
+    private javax.swing.JPanel favouritesListPanel;
+    private javax.swing.JPanel favouritesPanel;
+    private javax.swing.JScrollPane favouritesScrollPane;
+    private javax.swing.JTextField favouritesSearchField;
+    private javax.swing.JComboBox<String> favouritesSortComboBox;
+    private javax.swing.JComboBox<String> favouritesTypeComboBox;
     private javax.swing.JComboBox<String> heatLevelComboBox;
     private javax.swing.JButton homeButton;
     private javax.swing.JTextField ingredientNameField;
     private javax.swing.JTextField ingredientQuantityField;
     private javax.swing.JTextField ingredientUnitField;
+    private javax.swing.JLabel ingredientsHeadingLabel;
+    private javax.swing.JPanel ingredientsInfoPanel;
     private javax.swing.JPanel ingredientsPanel;
+    private javax.swing.JScrollPane ingredientsScrollPane;
+    private javax.swing.JButton ingredientsTabButton;
+    private javax.swing.JScrollPane instructionScrollPane;
+    private javax.swing.JPanel instructionsInfoPanel;
     private javax.swing.JPanel instructionsPanel;
     private javax.swing.JScrollPane instructionsScrollPane;
+    private javax.swing.JButton instructionsTabButton;
     private javax.swing.JTextArea instructionsTextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -953,6 +1432,15 @@ public class RecipeMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -963,6 +1451,8 @@ public class RecipeMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton mealPlanButton;
+    private javax.swing.JScrollPane mealPlanScrollPane;
+    private javax.swing.JTable mealPlanTable;
     private javax.swing.JButton myRecipesButton;
     private javax.swing.JPanel noCookDetailsPanel;
     private javax.swing.JButton noCookFilterButton;
@@ -971,21 +1461,32 @@ public class RecipeMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField prepTimeField;
     private javax.swing.JComboBox<String> prepTimeUnitComboBox;
     private javax.swing.JComboBox<String> recipeCategoryComboBox;
+    private javax.swing.JLabel recipeDetailsCategoryLabel;
+    private javax.swing.JToggleButton recipeDetailsFavouriteButton;
+    private javax.swing.JLabel recipeDetailsImageLabel;
+    private javax.swing.JLabel recipeDetailsNameLabel;
+    private javax.swing.JPanel recipeDetailsPanel;
+    private javax.swing.JLabel recipeDetailsTimeLabel;
+    private javax.swing.JLabel recipeDetailsTypeLabel;
+    private javax.swing.JPanel recipeInfoPanel;
+    private javax.swing.JList<String> recipeIngredientsList;
+    private javax.swing.JTextArea recipeInstructionsTextArea;
     private javax.swing.JTextField recipeNameField;
     private javax.swing.JComboBox<String> recipeTypeComboBox;
     private javax.swing.JPanel recipesPanel;
     private javax.swing.JScrollPane recipesScrollPane;
     private javax.swing.JTextField recipesSearchField;
     private javax.swing.JButton removeIngredientButton;
+    private javax.swing.JButton savePlanButton;
     private javax.swing.JButton saveRecipeButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
-    private javax.swing.JButton settingsButton;
     private javax.swing.JPanel sidebarPanel;
     private javax.swing.JComboBox<String> sortByComboBox;
     private javax.swing.JPanel stoveDetailsPanel;
     private javax.swing.JButton stoveTopFilterButton;
     private javax.swing.JComboBox<String> temperatureUnitComboBox;
     private javax.swing.JButton viewAllButton;
+    private javax.swing.JPanel weeklyMealPlanPanel;
     // End of variables declaration//GEN-END:variables
 }
