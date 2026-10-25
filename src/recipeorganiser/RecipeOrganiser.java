@@ -15,18 +15,27 @@ public class RecipeOrganiser {
      */
     //Starts the Recipe Organiser application and connects the main classes.
     public static void main(String[] args) throws SQLException{
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                   javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                   break;
+               }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+           ex.printStackTrace();
+        }
         RecipeDatabase database = new RecipeDatabase();
         database.createTables();
-        RecipeManager manager = new RecipeManager(database);
         
+        RecipeManager manager = new RecipeManager(database);
+
         RecipeFactory factory = new RecipeFactory();
         
-        //RecipeManager manager = new RecipeManager();
-        //RecipeFileManager fileManager = new RecipeFileManager();
-        
-        //fileManager.loadRecipes(manager);
-        //RecipeConsoleUI cui = new RecipeConsoleUI(manager, fileManager);
-        //cui.run();
+        java.awt.EventQueue.invokeLater(() -> {
+            RecipeMainFrame gui = new RecipeMainFrame(manager, factory);
+            gui.setVisible(true);
+        });
         
     }
     

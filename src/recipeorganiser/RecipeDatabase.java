@@ -16,11 +16,21 @@ import java.util.List;
  *
  * @author chaimaoueslati
  */
+/*
+ * Handles database operations for recipes, ingredients, instructions,
+ * favourites and weekly meal planning using Apache Derby and JDBC.
+ *
+ * AI-assisted: Guidance on JDBC, SQL operations, database relationships,
+ * and debugging database errors.
+ */
 public class RecipeDatabase {
+    // Opens a connection to the embedded Apache Derby database.
     public Connection connectDatabase() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:derby:RecipeDB;create=true");
         return conn;
     }
+    
+   // Creates the required database tables if they do not already exist.
     public void createTables() throws SQLException {
         
         try (Connection conn = connectDatabase();
@@ -90,7 +100,7 @@ public class RecipeDatabase {
             );
         }
     }
-        
+    // Ignores the Derby error when a table already exists.   
     private void createTable(Statement statement, String sql) throws SQLException {
         try {
             
@@ -101,7 +111,7 @@ public class RecipeDatabase {
             }
         }
     }
-    
+    // Checks for duplicate names and saves a recipe in a transaction.
     public boolean addRecipe(Recipe recipe) throws SQLException {
         
         String checkSql = "SELECT ID FROM RECIPE WHERE LOWER(NAME) = LOWER(?)";
@@ -147,7 +157,7 @@ public class RecipeDatabase {
         
 
     }
-    
+    // Saves the details specific to this recipe type.
     private void insertBakingRecipe(Connection conn,BakingRecipe recipe) throws SQLException{
         int recipeId;
         String sql="INSERT INTO RECIPE" +
@@ -183,7 +193,7 @@ public class RecipeDatabase {
         insertInstructions(conn, recipeId, recipe);
         
     }
-    
+    // Saves the details specific to this recipe type.
     private void insertStoveTopRecipe(Connection conn, StoveTopRecipe recipe) throws SQLException{
         int recipeId;
         String sql="INSERT INTO RECIPE" +
@@ -215,7 +225,7 @@ public class RecipeDatabase {
         insertInstructions(conn, recipeId, recipe);
         
     }
-    
+    // Saves the details specific to this recipe type.
     private void insertNoCookRecipe(Connection conn, NoCookRecipe recipe) throws SQLException{
         int recipeId;
         String sql="INSERT INTO RECIPE" +
@@ -246,7 +256,7 @@ public class RecipeDatabase {
         insertInstructions(conn, recipeId, recipe);
         
     }
-    
+    // Saves the ingredients in their original order.
     private void insertIngredients(Connection conn, int recipeId, Recipe recipe) throws SQLException{
         
         String sql = "INSERT INTO INGREDIENT " +
@@ -271,7 +281,7 @@ public class RecipeDatabase {
 
         
     }
-    
+    // Saves the instructions in their original order.
     private void insertInstructions(Connection conn, int recipeId, Recipe recipe) throws SQLException{
         String sql = "INSERT INTO INSTRUCTIONS " +
                      "(RECIPE_ID, INSTRUCTION_ORDER, INSTRUCTION) " +
@@ -375,7 +385,7 @@ public class RecipeDatabase {
         return null;
         
     }  
-    
+    // Reconstructs a recipe object and its details from database records.
     private Recipe buildRecipe(Connection conn, ResultSet rs) throws SQLException{
         int recipeId = rs.getInt("ID");
         String name = rs.getString("NAME");
@@ -490,7 +500,7 @@ public class RecipeDatabase {
 
         return list;
     }
-    
+    // Removes the recipe and its related records in a transaction.
     public boolean removeRecipe(String name) throws SQLException {
 
         String findSql = "SELECT ID FROM RECIPE WHERE LOWER(NAME) = LOWER(?)";
@@ -551,7 +561,7 @@ public class RecipeDatabase {
             }
         }
     }
-    
+    // Updates the recipe and replaces its stored ingredients and instructions.
     public boolean editRecipe(String oldName, Recipe updatedRecipe) throws SQLException {
 
         String findSql = "SELECT ID FROM RECIPE WHERE LOWER(NAME) = LOWER(?)";
@@ -811,7 +821,7 @@ public class RecipeDatabase {
     
     }
     
-    
+    // Replaces an existing meal assignment or inserts a new one.
     public boolean addMealToPlan(String recipeName, DayOfWeek day, MealType mealType) throws SQLException{
         String findSql = "SELECT ID FROM RECIPE WHERE LOWER(NAME) = LOWER(?)";
 
@@ -881,7 +891,7 @@ public class RecipeDatabase {
         }
             
     }
-    
+    // Loads planned meals and their associated recipe objects.
     public List<PlannedMeal> viewWeeklyMealPlan() throws SQLException{
         List<PlannedMeal> list = new ArrayList<>();
         String sql="SELECT WEEKLY_MEAL_PLAN.DAY_OF_WEEK, " +

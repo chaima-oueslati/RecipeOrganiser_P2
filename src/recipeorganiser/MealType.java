@@ -8,6 +8,9 @@ package recipeorganiser;
  *
  * @author chaimaoueslati
  */
+/*
+ * Defines the meal categories used in the weekly meal planner.
+ */
 public enum MealType {
     
     BREAKFAST,

@@ -8,6 +8,10 @@ package recipeorganiser;
  *
  * @author chaimaoueslati
  */
+/*
+ * Represents a recipe assigned to a particular day and meal type
+ * in the weekly meal plan.
+ */
 public class PlannedMeal {
     
     private DayOfWeek day;
@@ -18,6 +22,17 @@ public class PlannedMeal {
         this.day = day;
         this.mealType = mealType;
         this.recipe = recipe;
+    }
+    public DayOfWeek getDay() {
+        return day;
+    }
+
+    public MealType getMealType() {
+        return mealType;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
     }
 
 }

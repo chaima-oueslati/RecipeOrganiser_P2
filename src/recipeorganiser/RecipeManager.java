@@ -25,8 +25,7 @@ public class RecipeManager {
         this.database = database;
     }
     
-    // Adds a recipe using a lowercase name as the map key to prevent
-    // duplicate names with different capitalisation.
+    // Adds a recipe through the database, which checks for duplicate names.
     public boolean addRecipe(Recipe recipe)throws SQLException{
         return database.addRecipe(recipe);              
     }
@@ -35,7 +34,7 @@ public class RecipeManager {
         return database.removeRecipe(name);
     }
     
-    // Returns a copy of all recipes currently stored.
+    // Retrieves all recipes stored in the database.
     public List<Recipe> viewRecipes() throws SQLException{
         return database.viewRecipes();
         
@@ -62,7 +61,7 @@ public class RecipeManager {
     public List<Recipe> searchByName(String word) throws SQLException{
         return database.searchByName(word);
     }
-    
+    //Add a recipe to favourite 
     public boolean addFavourite(String name) throws SQLException{
         return database.addFavourite(name);
     }
